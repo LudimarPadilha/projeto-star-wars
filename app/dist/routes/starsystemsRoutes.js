@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const starsystemsController_1 = require("../controllers/starsystemsController");
+const authMiddleware_1 = require("../middleware/authMiddleware");
+const validationMiddleware_1 = require("../middleware/validationMiddleware");
+const router = (0, express_1.Router)();
+router.post('/', authMiddleware_1.authMiddleware, validationMiddleware_1.validaEstelar, starsystemsController_1.createEstelar);
+router.get('/', starsystemsController_1.getEstelar);
+router.get('/:id', starsystemsController_1.getEstelarId);
+router.put('/:id', authMiddleware_1.authMiddleware, validationMiddleware_1.validaEstelar, starsystemsController_1.updateEstelar);
+router.delete('/:id', authMiddleware_1.authMiddleware, starsystemsController_1.deleteEstelar);
+exports.default = router;

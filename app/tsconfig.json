@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,    
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": "./src",
+    "paths": {
+      "*": ["node_modules/*"]
+    },
+    "outDir": "./dist",
+    "rootDir": "./src"
+  },
+  //"include": ["src/**/*.ts", "dataSource.ts"],
+  "include": ["src/**/*","src/dataSource.ts"],
+  "exclude": ["node_modules"]
+}

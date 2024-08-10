@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const spaceshipsController_1 = require("../controllers/spaceshipsController");
+const authMiddleware_1 = require("../middleware/authMiddleware");
+const validationMiddleware_1 = require("../middleware/validationMiddleware");
+const router = (0, express_1.Router)();
+router.post('/', authMiddleware_1.authMiddleware, validationMiddleware_1.validaNave, spaceshipsController_1.createNave);
+router.get('/', spaceshipsController_1.getNave);
+router.get('/:id', spaceshipsController_1.getNaveId);
+router.put('/:id', authMiddleware_1.authMiddleware, validationMiddleware_1.validaNave, spaceshipsController_1.updateNave);
+router.delete('/:id', authMiddleware_1.authMiddleware, spaceshipsController_1.deleteNave);
+exports.default = router;

@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const planetsController_1 = require("../controllers/planetsController");
+const authMiddleware_1 = require("../middleware/authMiddleware");
+const validationMiddleware_1 = require("../middleware/validationMiddleware");
+const router = (0, express_1.Router)();
+router.post('/', authMiddleware_1.authMiddleware, validationMiddleware_1.validaPlanets, planetsController_1.createPlanets);
+router.get('/', planetsController_1.getPlanets);
+router.get('/:id', planetsController_1.getPlanetsId);
+router.put('/:id', authMiddleware_1.authMiddleware, validationMiddleware_1.validaPlanets, planetsController_1.updatePlanets);
+router.delete('/:id', authMiddleware_1.authMiddleware, planetsController_1.deletePlanets);
+exports.default = router;
